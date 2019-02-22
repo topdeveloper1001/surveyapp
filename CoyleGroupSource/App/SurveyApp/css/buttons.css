@@ -1,0 +1,52 @@
+﻿
+
+.contentbutton {
+    font-size: large;
+    padding: 5px;
+    background-color: #fff;
+    font-style: italic;
+    font-size: 10pt;
+}
+
+    .contentbutton .header {
+        font-weight: bolder;
+        font-style: normal;
+    }
+
+    .contentbutton .addtocal {
+        font-size: 10pt;
+    }
+
+    .contentbutton .btntitle {
+        font-weight: bolder;
+    }
+
+    .contentbutton .icon {
+        text-align: right;
+        padding-bottom: 20px;
+    }
+
+    .contentbutton .icon-nopad {
+        text-align: right;
+    }
+
+    .contentbutton .bigger {
+        font-size: 12pt;
+    }
+
+    .contentbutton .lighter {
+        color: #696969;
+    }
+
+    .contentbutton .lightest {
+        color: #fff;
+    }
+
+    .contentbutton .tiny {
+        font-size: 7pt;
+    }
+
+    .contentbutton .textbody {
+        margin: 10px;
+    }
+    

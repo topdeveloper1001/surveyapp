@@ -1,0 +1,10 @@
+﻿
+
+li a {
+    color: #696969;
+    font-size: 10pt;
+}
+
+li a:hover {
+    color: #ff6a00;
+}

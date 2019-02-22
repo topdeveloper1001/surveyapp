@@ -1,0 +1,542 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{52B2472B-5D7E-4A27-9E96-218302B248D5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SurveyApp</RootNamespace>
+    <AssemblyName>SurveyApp</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\freezetables.css" />
+    <Content Include="css\print1.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="images\email\cg-logo.png" />
+    <Content Include="images\HomeImg.png" />
+    <Content Include="images\Logos\cg-logo.png" />
+    <Content Include="images\Watermark.jpg" />
+    <Content Include="js\clientapproval_validation.js" />
+    <Content Include="js\client_qa.js" />
+    <Content Include="js\datepicker-setup.js" />
+    <Content Include="js\q_and_a.js" />
+    <Content Include="js\summary_validation.js" />
+    <Content Include="lib\bootbox\bootbox.min.js" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.css" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.min.css" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.css" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.min.css" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.css" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="lib\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="lib\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.en-AU.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.eo.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.ko.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.mn.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.nb.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Include="lib\bootstrap-datepicker\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="lib\jquery\jquery-3.2.1.min.js" />
+    <Content Include="lib\moment\moment-with-locales.js" />
+    <Content Include="lib\moment\moment.js" />
+    <Content Include="Reports.aspx" />
+    <Content Include="Survey.aspx" />
+    <Content Include="AdminTool.aspx" />
+    <Content Include="css\buttons.css" />
+    <Content Include="css\content7.css" />
+    <Content Include="css\custom11.css" />
+    <Content Include="css\customicons2.css" />
+    <Content Include="css\dialogs.css" />
+    <Content Include="css\fonts.css" />
+    <Content Include="css\layout1.css" />
+    <Content Include="css\login1.css" />
+    <Content Include="css\menu4.css" />
+    <Content Include="css\q_and_a.css" />
+    <Content Include="css\tiles.css" />
+    <Content Include="css\video1.css" />
+    <Content Include="Global.asax" />
+    <Content Include="images\ButtonIcons\close.png" />
+    <Content Include="images\ButtonIcons\close_over.png" />
+    <Content Include="images\Dialogs\xbutton.png" />
+    <Content Include="images\divider.png" />
+    <Content Include="images\Login\userlogin.png" />
+    <Content Include="images\upload_photo.png" />
+    <Content Include="lib\awesome-checkbox\awesome-bootstrap-checkbox.css" />
+    <Content Include="lib\Xbootstrap-datetimepickerX\bootstrap-datetimepicker.css" />
+    <Content Include="lib\Xbootstrap-datetimepickerX\bootstrap-datetimepicker.js" />
+    <Content Include="lib\Xbootstrap-datetimepickerX\moment-with-locales.js" />
+    <Content Include="lib\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="lib\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.min.css" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="lib\bootstrap\js\bootstrap.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.min.js" />
+    <Content Include="lib\bootstrap\js\npm.js" />
+    <Content Include="lib\font-awesome\css\font-awesome.css" />
+    <Content Include="lib\font-awesome\css\font-awesome.min.css" />
+    <Content Include="lib\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="lib\formvalidation\dist\css\formValidation.css" />
+    <Content Include="lib\formvalidation\dist\css\formValidation.min.css" />
+    <Content Include="lib\formvalidation\dist\js\formValidation.js" />
+    <Content Include="lib\formvalidation\dist\js\formValidation.min.js" />
+    <Content Include="lib\formvalidation\dist\js\formValidation.popular.js" />
+    <Content Include="lib\formvalidation\dist\js\formValidation.popular.min.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\bootstrap.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\bootstrap.min.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\bootstrap4.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\bootstrap4.min.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\foundation.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\foundation.min.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\foundation5.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\foundation5.min.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\pure.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\pure.min.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\semantic.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\semantic.min.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\uikit.js" />
+    <Content Include="lib\formvalidation\dist\js\framework\uikit.min.js" />
+    <Content Include="lib\formvalidation\dist\js\language\ar_MA.js" />
+    <Content Include="lib\formvalidation\dist\js\language\bg_BG.js" />
+    <Content Include="lib\formvalidation\dist\js\language\ca_ES.js" />
+    <Content Include="lib\formvalidation\dist\js\language\cs_CZ.js" />
+    <Content Include="lib\formvalidation\dist\js\language\da_DK.js" />
+    <Content Include="lib\formvalidation\dist\js\language\de_DE.js" />
+    <Content Include="lib\formvalidation\dist\js\language\el_GR.js" />
+    <Content Include="lib\formvalidation\dist\js\language\en_US.js" />
+    <Content Include="lib\formvalidation\dist\js\language\es_CL.js" />
+    <Content Include="lib\formvalidation\dist\js\language\es_ES.js" />
+    <Content Include="lib\formvalidation\dist\js\language\eu_ES.js" />
+    <Content Include="lib\formvalidation\dist\js\language\fa_IR.js" />
+    <Content Include="lib\formvalidation\dist\js\language\fi_FI.js" />
+    <Content Include="lib\formvalidation\dist\js\language\fr_BE.js" />
+    <Content Include="lib\formvalidation\dist\js\language\fr_FR.js" />
+    <Content Include="lib\formvalidation\dist\js\language\he_IL.js" />
+    <Content Include="lib\formvalidation\dist\js\language\hi_IN.js" />
+    <Content Include="lib\formvalidation\dist\js\language\hu_HU.js" />
+    <Content Include="lib\formvalidation\dist\js\language\id_ID.js" />
+    <Content Include="lib\formvalidation\dist\js\language\it_IT.js" />
+    <Content Include="lib\formvalidation\dist\js\language\ja_JP.js" />
+    <Content Include="lib\formvalidation\dist\js\language\nl_BE.js" />
+    <Content Include="lib\formvalidation\dist\js\language\nl_NL.js" />
+    <Content Include="lib\formvalidation\dist\js\language\no_NO.js" />
+    <Content Include="lib\formvalidation\dist\js\language\pl_PL.js" />
+    <Content Include="lib\formvalidation\dist\js\language\pt_BR.js" />
+    <Content Include="lib\formvalidation\dist\js\language\pt_PT.js" />
+    <Content Include="lib\formvalidation\dist\js\language\ro_RO.js" />
+    <Content Include="lib\formvalidation\dist\js\language\ru_RU.js" />
+    <Content Include="lib\formvalidation\dist\js\language\sk_SK.js" />
+    <Content Include="lib\formvalidation\dist\js\language\sq_AL.js" />
+    <Content Include="lib\formvalidation\dist\js\language\sr_RS.js" />
+    <Content Include="lib\formvalidation\dist\js\language\sv_SE.js" />
+    <Content Include="lib\formvalidation\dist\js\language\th_TH.js" />
+    <Content Include="lib\formvalidation\dist\js\language\tr_TR.js" />
+    <Content Include="lib\formvalidation\dist\js\language\ua_UA.js" />
+    <Content Include="lib\formvalidation\dist\js\language\vi_VN.js" />
+    <Content Include="lib\formvalidation\dist\js\language\zh_CN.js" />
+    <Content Include="lib\formvalidation\dist\js\language\zh_TW.js" />
+    <Content Include="lib\jquery\jquery-3.1.1.min.js" />
+    <Content Include="lib\tinymce\jquery.tinymce.min.js" />
+    <Content Include="lib\tinymce\license.txt" />
+    <Content Include="lib\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="lib\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="lib\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\example\dialog.html" />
+    <Content Include="lib\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="lib\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="lib\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="lib\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="lib\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="lib\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="lib\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="lib\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="lib\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="lib\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="lib\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="lib\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="lib\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="lib\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="lib\tinymce\themes\modern\theme.min.js" />
+    <Content Include="lib\tinymce\tinymce.min.js" />
+    <Content Include="packages.config" />
+    <Content Include="Site.Master" />
+    <Content Include="css\fonts\Minion\MinionPro-Regular.otf" />
+    <Content Include="css\fonts\Minion\MinionPro.ttf" />
+    <Content Include="css\fonts\Noto-Sans\NotoSans-Bold.ttf" />
+    <Content Include="css\fonts\Noto-Sans\NotoSans-BoldItalic.ttf" />
+    <Content Include="css\fonts\Noto-Sans\NotoSans-Italic.ttf" />
+    <Content Include="css\fonts\Noto-Sans\NotoSans-Regular.ttf" />
+    <Content Include="lib\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap.css.map" />
+    <Content Include="lib\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="lib\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="lib\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="lib\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="lib\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="lib\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="lib\font-awesome\less\animated.less" />
+    <Content Include="lib\font-awesome\less\bordered-pulled.less" />
+    <Content Include="lib\font-awesome\less\core.less" />
+    <Content Include="lib\font-awesome\less\fixed-width.less" />
+    <Content Include="lib\font-awesome\less\font-awesome.less" />
+    <Content Include="lib\font-awesome\less\icons.less" />
+    <Content Include="lib\font-awesome\less\larger.less" />
+    <Content Include="lib\font-awesome\less\list.less" />
+    <Content Include="lib\font-awesome\less\mixins.less" />
+    <Content Include="lib\font-awesome\less\path.less" />
+    <Content Include="lib\font-awesome\less\rotated-flipped.less" />
+    <Content Include="lib\font-awesome\less\stacked.less" />
+    <Content Include="lib\font-awesome\less\variables.less" />
+    <Content Include="lib\font-awesome\scss\font-awesome.scss" />
+    <Content Include="lib\font-awesome\scss\_animated.scss" />
+    <Content Include="lib\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="lib\font-awesome\scss\_core.scss" />
+    <Content Include="lib\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="lib\font-awesome\scss\_icons.scss" />
+    <Content Include="lib\font-awesome\scss\_larger.scss" />
+    <Content Include="lib\font-awesome\scss\_list.scss" />
+    <Content Include="lib\font-awesome\scss\_mixins.scss" />
+    <Content Include="lib\font-awesome\scss\_path.scss" />
+    <Content Include="lib\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="lib\font-awesome\scss\_stacked.scss" />
+    <Content Include="lib\font-awesome\scss\_variables.scss" />
+    <Content Include="lib\tinymce\langs\readme.md" />
+    <Content Include="lib\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="lib\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="lib\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="lib\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="lib\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="lib\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="templates\pushnotifications.htm" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="downloads\CoyleGroup_CodeofConduct_SafetyAuditors.pdf" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.css.map" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.min.css.map" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.standalone.min.css.map" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.css.map" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.min.css.map" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.min.css.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Laptop.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.Rackspace.config" />
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UserLogin.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="api\LoginController.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Code\cConstants.cs" />
+    <Compile Include="Code\cData.cs" />
+    <Compile Include="Code\cFiles.cs" />
+    <Compile Include="Code\cMailer.cs" />
+    <Compile Include="Code\cMsgBox.cs" />
+    <Compile Include="Code\cPushNotifications.cs" />
+    <Compile Include="Code\cRepeater.cs" />
+    <Compile Include="Code\cSecurity.cs" />
+    <Compile Include="Code\cTools.cs" />
+    <Compile Include="Code\CustomDataTypes.cs" />
+    <Compile Include="Code\cVersion.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Survey.aspx.cs">
+      <DependentUpon>Survey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Survey.aspx.designer.cs">
+      <DependentUpon>Survey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminTool.aspx.cs">
+      <DependentUpon>AdminTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminTool.aspx.designer.cs">
+      <DependentUpon>AdminTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserLogin.aspx.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserLogin.aspx.designer.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50853</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50853/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
