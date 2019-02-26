@@ -1,0 +1,221 @@
+﻿
+
+.logobar {
+    padding-left: 14px;
+}
+
+.logoimg {
+    padding-top:20px;
+    padding-bottom:3px;
+}
+
+.slogan {
+    font-family: Helvetica, sans-serif;
+    font-size: 11pt;
+    color: #00538F;
+    padding-left: 20px;
+    padding-top:10px;
+    line-height: 20px;
+    padding-bottom:20px;
+}
+
+
+@media only screen and (max-width : 800px) {
+
+    .logobar {
+        padding-left: 30px;
+        padding-top:5px;
+    }
+
+    .logoimg {
+        padding:0;
+    }
+
+    .slogan {
+        padding-left: 30px;
+        padding-top: 4px;
+    }
+}
+
+
+
+.usertop {
+    padding-top:14px;
+}
+
+#banner {
+    background-image: url('../images/Banners/4.jpg');
+    width: 1025px;
+    height: 181px;
+    font-size: 22pt;
+    font-style: italic;
+    font-weight: bold;
+    color: #ffffff;
+    padding-left: 480px;
+    padding-top: 50px;
+    text-align: center;
+    margin-top: -20px;
+}
+
+.banner_light {
+    color: #ffe17f;
+}
+
+/* the title of the page */
+.pagetitle {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.sectiontitle {
+    font-size: large;
+    font-weight: bold;
+    padding-bottom:10px;
+}
+
+.sectionintro {
+    font-style: italic;
+    padding-bottom:10px;
+}
+
+.homenews {
+    max-height: 200px;
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+.quote {
+    font-style: italic;
+    font-weight: bold;
+}
+
+/** blockquote styles **/
+.bq { 
+    max-width: 490px; 
+    background: url('../images/Quotes/quote1.png') top left no-repeat; 
+    line-height: 18px;  
+    padding-left: 60px;
+    padding-top: 20px;
+}
+    .bq p { 
+        line-height: 18px; 
+        background: url('../images/Quotes/quote2.png') bottom right no-repeat; 
+        font-size: 12pt;
+        font-weight: bold;
+    }
+
+.bqlegend {
+    font-style: italic;
+    font-weight: normal;
+    padding-top: 10px;
+}
+
+.aboutyouform {
+    padding-left: 30px;
+    width:80%;
+}
+
+.aboutyouform .control-label {
+     text-align:left !important; 
+     color: #525252;
+     font-weight: normal;
+}
+
+
+.divider-dots {
+    background: url('../images/divider.png') no-repeat;
+    margin-top:10px;
+    margin-bottom:10px;
+    height:10px;
+    text-align: center;
+}
+
+
+
+.regulartext {
+    font-size: smaller;
+}
+
+.boxheader {
+    background-color:#00ADEF;
+    color: #ffffff;
+    font-size:large;
+    padding:10px;
+}
+
+.white {
+    color: #ffffff;
+}
+
+.gray {
+    color: #696969;
+}
+
+.userquotes {
+    font-style:normal;
+}
+
+.datarowheader {
+    background: #999999;
+    color: #ffffff;
+    border: 1px solid #696969;
+    padding: 5px;
+    
+}
+
+
+.datarowfooter1 {
+    background: #EBEBEB;
+    padding: 5px;
+}
+
+.datarowfooter2 {
+    background: #CCCACB;
+    padding: 5px;
+}
+
+.datarowfooter2_extradeep {
+    background: #CCCACB;
+    padding: 5px;
+    margin-bottom: 30px;
+}
+   
+.titletext {
+    background-color: #00467f;
+}
+
+.table tbody>tr>td.center-middle{
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+.inputgroup-titlebar {
+    background-color: #e7962b;
+    color: #ffffff;
+    font-size: small;
+    font-weight: bold;
+    margin-left: 5px; /* to match the inputgroup block*/
+    margin-right: 5px;
+    padding-left: 4px;  /* space before the title text starts on the left */
+}
+
+.inputgroup {
+    border: 1px dashed #e7962b;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px; /* space between title and start of body */
+    margin-left: 5px; 
+    margin-right: 5px; 
+    margin-bottom: 10px; /* space between vertical blocks */
+}
+
+.inputgroup-break {
+    border-top: 1px dashed #e7962b;
+    padding-bottom: 10px;
+}
+
+/* only allow preview of files to get to a max size */
+.file-preview {
+    max-width: 300px;
+}

@@ -1,0 +1,34 @@
+﻿.modal-dialog{
+    width:600px;
+    border:2px solid #ECF5FA;
+}
+
+.dialog-smaller {
+    width:400px;
+}
+.modal-body {
+    background-color:#014681;
+    color: #ffffff;
+    padding: 20px;
+}
+
+#dialogTitle {
+    font-weight: bold;
+    font-size:larger;
+}
+
+#dialogFooter {
+    border:2px solid #ECF5FA;
+    margin: 20px;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+#dialogFooterTitle {
+    font-weight: bold;
+    font-size:larger;
+}
+
+#dialogFooterBody {
+    padding-top: 90px;
+}
