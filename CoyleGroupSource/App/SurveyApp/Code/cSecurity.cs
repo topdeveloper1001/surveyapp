@@ -77,7 +77,24 @@ namespace SurveyApp
             
             return (userId != 0);
         }
-        
+
+        public static int checkMobileLogin(string loginName, string loginPassword)
+        {
+            int userId = 0;
+
+            // open db..
+            cData db = new cData();
+            db.openDB();
+
+            userId = db.getUserIDFromLogin(loginName, loginPassword, "application");
+            
+            
+
+            db.closeDB();   // cleanup
+
+            return userId;
+        }
+
         public static int userID()
         {
             return cTools.cIntExt(HttpContext.Current.Session["user.id"]);
@@ -92,6 +109,21 @@ namespace SurveyApp
             if (db.openDB())
             {
                 webUser = db.loadUser(userID());
+                db.closeDB();   // cleanup
+            }
+
+            return (webUser);
+        }
+
+        public static WebUser getUser(int userid)
+        {
+            // no longer using session as the photos change and I want this updated every time..
+            WebUser webUser = new WebUser();
+
+            cData db = new cData();
+            if (db.openDB())
+            {
+                webUser = db.loadUser(userid);
                 db.closeDB();   // cleanup
             }
 

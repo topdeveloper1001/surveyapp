@@ -8,6 +8,7 @@ using System.IO;
 using System.Web.UI.WebControls;
 
 using System.Configuration; // so I can access web.config
+using Newtonsoft.Json;
 
 namespace SurveyApp
 {
@@ -145,6 +146,42 @@ namespace SurveyApp
 
         }
 
+        private IEnumerable<Dictionary<string, object>> Serialize(SqlDataReader reader)
+        {
+            var results = new List<Dictionary<string, object>>();
+            var cols = new List<string>();
+            for (var i = 0; i < reader.FieldCount; i++)
+                cols.Add(reader.GetName(i));
+
+            while (reader.Read())
+                results.Add(SerializeRow(cols, reader));
+
+            return results;
+        }
+        private Dictionary<string, object> SerializeRow(IEnumerable<string> cols,
+                                                        SqlDataReader reader)
+        {
+            var result = new Dictionary<string, object>();
+            foreach (var col in cols)
+                result.Add(col, reader[col]);
+            return result;
+        }
+        public string bindToJsonString(string sqlCmd)
+        {
+            SqlDataReader rsReader;
+            SqlCommand cmd;
+            
+            cmd = new SqlCommand(sqlCmd, m_conn);
+            rsReader = cmd.ExecuteReader();
+
+            var r = Serialize(rsReader);
+            string json = JsonConvert.SerializeObject(r, Formatting.Indented);
+
+            rsReader.Close();
+            cmd.Dispose();
+
+            return json;
+        }
         /* 
          * Run a SQL command and bind to a REPEATER
          */

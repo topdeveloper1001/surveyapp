@@ -1,13 +1,14 @@
 ﻿<%@ Application Language="C#" %>
 <%@ Import Namespace="System.Web.Routing" %>
-
+<%@ Import Namespace="System.Web.Http" %>
+<%@ Import Namespace="SurveyApp" %>
 <script runat="server">
 
     void Application_Start(object sender, EventArgs e)
     {
         // Code that runs on application startup
         RegisterRoutes(RouteTable.Routes);
-
+        GlobalConfiguration.Configure(WebApiConfig.Register);
     }
 
     void Application_End(object sender, EventArgs e)
