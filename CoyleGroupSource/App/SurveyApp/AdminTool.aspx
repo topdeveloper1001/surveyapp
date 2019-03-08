@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminTool.aspx.cs" CodeFile="AdminTool.aspx.cs" Inherits="SurveyApp.AdminTool" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminTool.aspx.cs" Inherits="SurveyApp.AdminTool" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     
     <asp:PlaceHolder ID="phUserEditValidation" runat="server" Visible="false">

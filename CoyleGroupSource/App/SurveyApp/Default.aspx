@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" CodeBehind="~/Default.aspx.cs" Inherits="ArdentPortalWebApp.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="~/Default.aspx.cs" Inherits="ArdentPortalWebApp.Default" %>
 
 <!DOCTYPE html>
 
