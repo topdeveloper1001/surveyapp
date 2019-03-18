@@ -19,11 +19,11 @@
             var oControl = document.getElementById(controlRef);
             var answerText = oControl.value;
 
-            ajaxCall(questionID, answerText, 'null', 'null');
+        ajaxCall(questionID, answerText, 'null', 'null', 'null', 0, 0, 'null');
     }
 
     function saveClientTargetDate(questionID, targetDate) {
-        ajaxCall(questionID, 'null', targetDate, 'null');
+        ajaxCall(questionID, 'null', targetDate, 'null', 'null', 0, 0, 'null');
     }
 
     function closeClientResponse(questionID) {
@@ -43,7 +43,7 @@
             },
             callback: function (result) {
                 if (result == true) {
-                    ajaxCall(questionID, 'null', 'null', '1');      // close it!
+                    ajaxCall(questionID, 'null', 'null', '1', 'null', '0', '0', 'null');      // close it!
 
                     // let's not go back to the server..just hide that row now!!
                     $("#row_q" + questionID).hide();                 

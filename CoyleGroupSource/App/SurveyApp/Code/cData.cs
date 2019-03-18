@@ -532,7 +532,7 @@ namespace SurveyApp
             execSql(sqlCmd);
         }
         
-        public int saveSurveyAnswer(int surveyId, int userid, int questionid, int answerid, int classificationId = 0, string observationsText = "")
+        public int saveSurveyAnswer(int surveyId, int userid, int questionid, int answerid, int classificationId = 0, string observationsText = "", string rootcauseText = "", int checkboxIndex = 0, int checkboxValue = 0, int riskValue = 0, string otherText = "")
         {
             int newId = 0;
 
@@ -556,7 +556,22 @@ namespace SurveyApp
                     cmd.Parameters.AddWithValue("classificationid", classificationId);
                 if (observationsText != "null")       // I want to save Nulls in the observationsText is "null"
                     cmd.Parameters.AddWithValue("observations", observationsText);
-                
+                if (rootcauseText != "null")       // I want to save Nulls in the observationsText is "null"
+                    cmd.Parameters.AddWithValue("rootcause", rootcauseText);
+                if (checkboxIndex != 0)              // I want to save Nulls in the answerid if it's zero - keep it consistent
+                {
+                    cmd.Parameters.AddWithValue("chkidx", checkboxIndex);
+
+                    cmd.Parameters.AddWithValue("chkvalue", checkboxValue);
+                }
+                if(riskValue != 0)
+                {
+                    cmd.Parameters.AddWithValue("riskvalue", riskValue);
+                }
+
+                if (otherText != "null")  
+                    cmd.Parameters.AddWithValue("txtother", otherText);
+
                 // save now...
                 newId = Convert.ToInt32(cmd.ExecuteScalar());
             }

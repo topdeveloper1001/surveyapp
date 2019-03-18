@@ -376,6 +376,243 @@
                             <td colspan="3">
                                 
                                 <div class="form-horizontal">
+                                    <asp:Panel ID="pnlRisk" runat="server" Visible="true" CssClass="form-group riskoption">
+                                        
+                                        <asp:HyperLink ID="hlRisk1" runat="server">
+                                            <asp:Label ID="lbRisk1" runat="server" Text="Low" CssClass="glyphicon glyphicon-one-fine-empty-dot cellicon" />
+                                        </asp:HyperLink>
+                                        
+                                        
+                                        <asp:HyperLink ID="hlRisk2" runat="server">
+                                            <asp:Label ID="lbRisk2" runat="server" Text="Medium" CssClass="glyphicon glyphicon-one-fine-empty-dot cellicon" />
+                                        </asp:HyperLink>
+                                        
+                                        
+                                        <asp:HyperLink ID="hlRisk3" runat="server">
+                                            <asp:Label ID="lbRisk3" runat="server" Text="High" CssClass="glyphicon glyphicon-one-fine-empty-dot cellicon" />
+                                        </asp:HyperLink>
+                                        
+                                    </asp:Panel>
+                                    <asp:Panel ID="pnlCause" runat="server" Visible="true" CssClass="form-group">
+                                        <label class="col-sm-2 control-label">Root Cause:</label>
+                                        <div class="col-sm-10">
+                                            <asp:TextBox ID="tbRootCause" runat="server" CssClass="form-control hidden-print"  Text="" />
+                                            <asp:Label ID="lbRootCause" runat="server" Text="" CssClass="print-form-control visible-print" />
+                                        </div>
+                                        <label class="col-sm-2 control-label">Secondary Cause:</label>
+                                        <div class="col-sm-10" >
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkBehavioural" runat="server" />
+                                                <label>Behavioural</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkLeadership" runat="server" />
+                                                <label>Leadership</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkResources" runat="server" />
+                                                <label>Resources</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkEnvironmental" runat="server" />
+                                                <label>Environmental</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkPolicyAndProcedura" runat="server" />
+                                                <label>Policy/Procedura</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkCommunication" runat="server" />
+                                                <label>Communication</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkTraining" runat="server" />
+                                                <label>Training</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkContractual" runat="server" />
+                                                <label>Contractual</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkDesign" runat="server" />
+                                                <label>Design</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkPhysical" runat="server" />
+                                                <label>Physical</label>
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-2 control-label">Area of Risk:</label>
+                                        <div class="col-sm-10" >
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkWorkatHeigh" runat="server" />
+                                                <label>Work at Heigh</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkLiftingEquipment" runat="server" />
+                                                <label>Lifting Equipment</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkOfficeEquipment" runat="server" />
+                                                <label>Office Equipment</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkGeneralTools" runat="server" />
+                                                <label>General Tools</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkManualHandling" runat="server" />
+                                                <label>Manual Handling</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkSlipsTripsFalls" runat="server" />
+                                                <label>Slips,Trips,Falls</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkAccessEquipment" runat="server" />
+                                                <label>Access Equipment</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkOccupationalHealth" runat="server" />
+                                                <label>Occupational Health</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkChemicals" runat="server" />
+                                                <label>Chemicals</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkElectrical" runat="server" />
+                                                <label>Electrical</label>
+                                            </div>
+
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkErgonomics" runat="server" />
+                                                <label>Ergonomics</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkVDU" runat="server" />
+                                                <label>VDU</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkMechanical" runat="server" />
+                                                <label>Mechanical</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkDangerousGoods" runat="server" />
+                                                <label>Dangerous Goods</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkSafetyCriticalEquipment" runat="server" />
+                                                <label>Safety Critical Equipment</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkTransport" runat="server" />
+                                                <label>Transport</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkPlantAndMachinery" runat="server" />
+                                                <label>Plant/Machinery</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkPPE" runat="server" />
+                                                <label>PPE</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkConfinedSpace" runat="server" />
+                                                <label>Confined Space</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkFireAndBurns" runat="server" />
+                                                <label>Fire/Burns</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkDrowning" runat="server" />
+                                                <label>Drowning</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkEnvironmentalRisk" runat="server" />
+                                                <label>Environmental</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkBiological" runat="server" />
+                                                <label>Biological</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkWelfare" runat="server" />
+                                                <label>Welfare</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkSharps" runat="server" />
+                                                <label>Sharps</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkNoise" runat="server" />
+                                                <label>Noise</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkLighting" runat="server" />
+                                                <label>Lighting</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkPublicProtection" runat="server" />
+                                                <label>Public Protection</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkMaterialStorage" runat="server" />
+                                                <label>Material Storage</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkGeneralHousekeeping" runat="server" />
+                                                <label>General Housekeeping</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkTrafficManagement" runat="server" />
+                                                <label>Traffic Management</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkVibration" runat="server" />
+                                                <label>Vibration</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkEmergency" runat="server" />
+                                                <label>Emergency</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkCrisisManagement" runat="server" />
+                                                <label>Crisis Management</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkExplosives" runat="server" />
+                                                <label>Explosives</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkLoneWorking" runat="server" />
+                                                <label>Lone Working</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkStressAndFatigue" runat="server" />
+                                                <label>Stress/Fatigue</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkAlcoholAndDrugs" runat="server" />
+                                                <label>Alcohol/Drugs</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkBullying" runat="server" />
+                                                <label>Bullying</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkLackofCompetency" runat="server" />
+                                                <label>Lack of Competency</label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <asp:CheckBox ID="chkOther" runat="server" />
+                                                <label>Other</label>
+                                                <asp:TextBox ID="txtOther" runat="server" CssClass="form-control hidden-print"  Text="" />
+                                                <asp:Label ID="lbOther" runat="server" Text="" CssClass="print-form-control visible-print" />
+                                            </div>
+                                        </div>
+                                    </asp:Panel>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Classification</label>
                                         <div class="col-sm-10">
@@ -684,18 +921,28 @@
                 <asp:HiddenField ID="hidParamValue1" runat="server" />
                 <asp:HiddenField ID="hidParamValue2" runat="server" />
                 <asp:HiddenField ID="hidParamValue3" runat="server" />
+                <asp:HiddenField ID="hidParamValue4" runat="server" />
+                <asp:HiddenField ID="hidParamValue5" runat="server" />
+                <asp:HiddenField ID="hidParamValue6" runat="server" />
+                <asp:HiddenField ID="hidParamValue7" runat="server" />
+                <asp:HiddenField ID="hidParamValue8" runat="server" />
                 <asp:Button ID="cmdMakeAjaxCall" runat="server" Text="" CssClass="hidden" OnCommand="cmdMakeAjaxCall_Command" />
             </ContentTemplate>
         </asp:UpdatePanel>
 
         <script>
             // call the code-behind to save the current state of the course
-             function ajaxCall(paramName, paramValue1, paramValue2, paramValue3) {
+             function ajaxCall(paramName, paramValue1, paramValue2, paramValue3, paramValue4, paramValue5, paramValue6, paramValue7, paramValue8 = null) {
                 // set the params..
                 document.getElementById("<%=hidParamName.ClientID%>").value = paramName;
                 document.getElementById("<%=hidParamValue1.ClientID%>").value = paramValue1;
                 document.getElementById("<%=hidParamValue2.ClientID%>").value = paramValue2;
                 document.getElementById("<%=hidParamValue3.ClientID%>").value = paramValue3;
+                document.getElementById("<%=hidParamValue4.ClientID%>").value = paramValue4;
+                document.getElementById("<%=hidParamValue5.ClientID%>").value = paramValue5;
+                document.getElementById("<%=hidParamValue6.ClientID%>").value = paramValue6;
+                document.getElementById("<%=hidParamValue7.ClientID%>").value = paramValue7;
+                document.getElementById("<%=hidParamValue8.ClientID%>").value = paramValue8;
             
                 // click the button!
                 document.getElementById("<%=cmdMakeAjaxCall.ClientID%>").click();

@@ -706,6 +706,51 @@ namespace SurveyApp {
         protected global::System.Web.UI.WebControls.HiddenField hidParamValue3;
         
         /// <summary>
+        /// hidParamValue4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidParamValue4;
+        
+        /// <summary>
+        /// hidParamValue5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidParamValue5;
+        
+        /// <summary>
+        /// hidParamValue6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidParamValue6;
+        
+        /// <summary>
+        /// hidParamValue7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidParamValue7;
+        
+        /// <summary>
+        /// hidParamValue8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidParamValue8;
+        
+        /// <summary>
         /// cmdMakeAjaxCall control.
         /// </summary>
         /// <remarks>

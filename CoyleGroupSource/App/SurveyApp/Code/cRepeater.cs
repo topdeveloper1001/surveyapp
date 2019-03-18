@@ -145,6 +145,11 @@ namespace SurveyApp
             txtTarget.Text = cTools.cStrExt(System.Web.UI.DataBinder.Eval(e.Item.DataItem, fieldName));
         }
 
+        public static void setCheckbox(RepeaterItemEventArgs e, string ctrlName, string fieldName)
+        {
+            CheckBox chkTarget = (CheckBox)(e.Item.FindControl(ctrlName));
+            chkTarget.Checked = (System.Web.UI.DataBinder.Eval(e.Item.DataItem, fieldName)) is DBNull ? false : (bool)(System.Web.UI.DataBinder.Eval(e.Item.DataItem, fieldName));
+        }
         public static void setHiddenField(RepeaterItemEventArgs e, string ctrlName, string fieldName)
         {
             HiddenField txtTarget = (HiddenField)(e.Item.FindControl(ctrlName));
@@ -172,7 +177,7 @@ namespace SurveyApp
         public static void setPanelVisibility(RepeaterItemEventArgs e, string ctrlName, bool isVisible)
         {
             Panel pnlTarget = (Panel)(e.Item.FindControl(ctrlName));
-            pnlTarget.Visible = isVisible;
+            pnlTarget.Attributes["style"] = isVisible ? "display:block;" : "display:none;";
         }
 
         public static void setPanelStyle(RepeaterItemEventArgs e, string ctrlName, string cssClass)

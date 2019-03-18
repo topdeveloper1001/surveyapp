@@ -613,12 +613,12 @@ namespace SurveyApp
             configQuickNavbar();
         }
         
-        private void saveSurveyAnswer(int questionID, int answerID, int classificationId, string answerText)
+        private void saveSurveyAnswer(int questionID, int answerID, int classificationId, string answerText, string rootcauseText, int checkboxIndex, int checkboxValue, int riskValue, string txtother)
         {
             int surveyId = m_idref;
             
             // this saves a single answer - it will handle both the tickboxes and answer texts (optionally both)
-            int idCheck = m_data.saveSurveyAnswer(surveyId, cSecurity.userID(), questionID, answerID, classificationId, answerText);
+            int idCheck = m_data.saveSurveyAnswer(surveyId, cSecurity.userID(), questionID, answerID, classificationId, answerText, rootcauseText, checkboxIndex, checkboxValue, riskValue, txtother);
 
             //audit trail
             string auditDescription = m_data.getQuestion(questionID) + "\n";
@@ -650,7 +650,7 @@ namespace SurveyApp
             string questionText = cTools.cStrExt(cRepeater.getDataVal(e, "questiontext"));
             int catNum = cTools.cIntExt(cRepeater.getDataVal(e, "catnum"));
             int questionNum = cTools.cIntExt(cRepeater.getDataVal(e, "questionnum"));
-            
+            int riskID = cTools.cIntExt(cRepeater.getDataVal(e, "riskid"));
             /*
                 Show the category when it changes..
             */
@@ -688,11 +688,18 @@ namespace SurveyApp
             /*
                 Load up and show the previously entered answer for this question
             */
+
+
+
             if (answerID != 0)
             {
                 // turn on the tickbox for the required answer & populate any textboxes
                 cRepeater.setItemLabelStyle(e.Item, "lblAnswer" + answerID, cConstants.cssTicked); // this ticks the previously ticked answer
 
+                if (riskID > 0 && riskID < 4)
+                {
+                    cRepeater.setItemLabelStyle(e.Item, "lbRisk" + riskID, cConstants.cssTicked); // this ticks the previously ticked answer
+                }
                 // show the status lights - red orange green
                 string statusIcon = "";
                 string statusColor = "";
@@ -720,8 +727,67 @@ namespace SurveyApp
                 cRepeater.setPanelStyle(e, "pnlStatus", statusColor);
                 cRepeater.setItemLabelStyle(e.Item, "lblStatus", statusIcon);
             }
+
+            bool bPNLCause = (answerID == 6 || answerID == 7) ? true : false;
+            cRepeater.setPanelVisibility(e, "pnlCause", bPNLCause);
+            cRepeater.setPanelVisibility(e, "pnlRisk", bPNLCause);
+
             cRepeater.setTextbox(e, "txtObservations", "observations");
-            
+
+            cRepeater.setTextbox(e, "tbRootCause", "rootcause");
+            cRepeater.setTextbox(e, "txtOther", "txtOther");
+
+            cRepeater.setCheckbox(e, "chkBehavioural", "chkBehavioural");
+            cRepeater.setCheckbox(e, "chkLeadership", "chkLeadership");
+            cRepeater.setCheckbox(e, "chkResources", "chkResources");
+            cRepeater.setCheckbox(e, "chkEnvironmental", "chkEnvironmental");
+            cRepeater.setCheckbox(e, "chkPolicyAndProcedura", "chkPolicyAndProcedura");
+            cRepeater.setCheckbox(e, "chkCommunication", "chkCommunication");
+            cRepeater.setCheckbox(e, "chkTraining", "chkTraining");
+            cRepeater.setCheckbox(e, "chkContractual", "chkContractual");
+            cRepeater.setCheckbox(e, "chkDesign", "chkDesign");
+            cRepeater.setCheckbox(e, "chkPhysical", "chkPhysical");
+            cRepeater.setCheckbox(e, "chkWorkatHeigh", "chkWorkatHeigh");
+            cRepeater.setCheckbox(e, "chkLiftingEquipment", "chkLiftingEquipment");
+            cRepeater.setCheckbox(e, "chkOfficeEquipment", "chkOfficeEquipment");
+            cRepeater.setCheckbox(e, "chkGeneralTools", "chkGeneralTools");
+            cRepeater.setCheckbox(e, "chkManualHandling", "chkManualHandling");
+            cRepeater.setCheckbox(e, "chkSlipsTripsFalls", "chkSlipsTripsFalls");
+            cRepeater.setCheckbox(e, "chkAccessEquipment", "chkAccessEquipment");
+            cRepeater.setCheckbox(e, "chkOccupationalHealth", "chkOccupationalHealth");
+            cRepeater.setCheckbox(e, "chkChemicals", "chkChemicals");
+            cRepeater.setCheckbox(e, "chkElectrical", "chkElectrical");
+            cRepeater.setCheckbox(e, "chkErgonomics", "chkErgonomics");
+            cRepeater.setCheckbox(e, "chkVDU", "chkVDU");
+            cRepeater.setCheckbox(e, "chkMechanical", "chkMechanical");
+            cRepeater.setCheckbox(e, "chkDangerousGoods", "chkDangerousGoods");
+            cRepeater.setCheckbox(e, "chkSafetyCriticalEquipment", "chkSafetyCriticalEquipment");
+            cRepeater.setCheckbox(e, "chkTransport", "chkTransport");
+            cRepeater.setCheckbox(e, "chkPlantAndMachinery", "chkPlantAndMachinery");
+            cRepeater.setCheckbox(e, "chkPPE", "chkPPE");
+            cRepeater.setCheckbox(e, "chkConfinedSpace", "chkConfinedSpace");
+            cRepeater.setCheckbox(e, "chkFireAndBurns", "chkFireAndBurns");
+            cRepeater.setCheckbox(e, "chkDrowning", "chkDrowning");
+            cRepeater.setCheckbox(e, "chkEnvironmentalRisk", "chkEnvironmentalRisk");
+            cRepeater.setCheckbox(e, "chkBiological", "chkBiological");
+            cRepeater.setCheckbox(e, "chkWelfare", "chkWelfare");
+            cRepeater.setCheckbox(e, "chkSharps", "chkSharps");
+            cRepeater.setCheckbox(e, "chkNoise", "chkNoise");
+            cRepeater.setCheckbox(e, "chkLighting", "chkLighting");
+            cRepeater.setCheckbox(e, "chkPublicProtection", "chkPublicProtection");
+            cRepeater.setCheckbox(e, "chkMaterialStorage", "chkMaterialStorage");
+            cRepeater.setCheckbox(e, "chkGeneralHousekeeping", "chkGeneralHousekeeping");
+            cRepeater.setCheckbox(e, "chkTrafficManagement", "chkTrafficManagement");
+            cRepeater.setCheckbox(e, "chkVibration", "chkVibration");
+            cRepeater.setCheckbox(e, "chkEmergency", "chkEmergency");
+            cRepeater.setCheckbox(e, "chkCrisisManagement", "chkCrisisManagement");
+            cRepeater.setCheckbox(e, "chkExplosives", "chkExplosives");
+            cRepeater.setCheckbox(e, "chkLoneWorking", "chkLoneWorking");
+            cRepeater.setCheckbox(e, "chkStressAndFatigue", "chkStressAndFatigue");
+            cRepeater.setCheckbox(e, "chkAlcoholAndDrugs", "chkAlcoholAndDrugs");
+            cRepeater.setCheckbox(e, "chkBullying", "chkBullying");
+            cRepeater.setCheckbox(e, "chkLackofCompetency", "chkLackofCompetency");
+            cRepeater.setCheckbox(e, "chkOther", "chkOther");
             // classification dropdown
             string sqlCmd = "SELECT classificationtitle, classificationid FROM classifications WHERE deleted=0 ORDER BY classificationid ASC";
             cRepeater.setDropdown(e, "cboClassification", "classificationid", sqlCmd, m_data, "= Please Select =", "0");
@@ -813,6 +879,35 @@ namespace SurveyApp
                     break;
             }
 
+
+            // set up the event handlers for the tick (client-side)
+            HyperLink hlRisk1 = (HyperLink)(e.Item.FindControl("hlRisk1"));
+            HyperLink hlRisk2 = (HyperLink)(e.Item.FindControl("hlRisk2"));
+            HyperLink hlRisk3 = (HyperLink)(e.Item.FindControl("hlRisk3"));
+
+            string lbRisk1 = ((Label)(e.Item.FindControl("lbRisk1"))).ClientID;
+            string lbRisk2 = ((Label)(e.Item.FindControl("lbRisk2"))).ClientID;
+            string lbRisk3 = ((Label)(e.Item.FindControl("lbRisk3"))).ClientID;
+
+            if (!_isreadonly)
+            {
+                hlRisk1.Attributes.Add("onclick",
+                    "tickMe(" + questionID + ", 1, " + m_rowindex + ", " + 4 + "); return (false);"
+                );
+                hlRisk1.Attributes.Add("style", "cursor:pointer;");
+
+                hlRisk2.Attributes.Add("onclick",
+                    "tickMe(" + questionID + ", 2, " + m_rowindex + ", " + 4 + "); return (false);"
+                    );
+                hlRisk2.Attributes.Add("style", "cursor:pointer;");
+
+                hlRisk3.Attributes.Add("onclick",
+                    "tickMe(" + questionID + ", 3, " + m_rowindex + ", " + 4 + "); return (false);"
+                    );
+                hlRisk3.Attributes.Add("style", "cursor:pointer;");
+            }
+
+
             // set up the auto-save when the content has changed - "Observations" (trigged on losefocus)
             TextBox txtObservations = (TextBox)(e.Item.FindControl("txtObservations"));
             if (!_isreadonly)
@@ -822,6 +917,384 @@ namespace SurveyApp
                 );
             }
 
+            TextBox tbRootCause = (TextBox)(e.Item.FindControl("tbRootCause"));
+            if (!_isreadonly)
+            {
+                tbRootCause.Attributes.Add("onchange",
+                "saveRootCause(" + questionID + ",'" + tbRootCause.ClientID + "');"
+                );
+            }
+
+            TextBox txtOther = (TextBox)(e.Item.FindControl("txtOther"));
+            if (!_isreadonly)
+            {
+                txtOther.Attributes.Add("onchange",
+                "saveOther(" + questionID + ",'" + txtOther.ClientID + "');"
+                );
+            }
+
+            CheckBox chkBehavioural = (CheckBox)(e.Item.FindControl("chkBehavioural"));
+            if (!_isreadonly)
+            {
+                chkBehavioural.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",1,'" + chkBehavioural.ClientID + "');"
+                );
+            }
+            CheckBox chkLeadership = (CheckBox)(e.Item.FindControl("chkLeadership"));
+            if (!_isreadonly)
+            {
+                chkLeadership.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",2,'" + chkLeadership.ClientID + "');"
+                );
+            }
+            CheckBox chkResources = (CheckBox)(e.Item.FindControl("chkResources"));
+            if (!_isreadonly)
+            {
+                chkResources.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",3,'" + chkResources.ClientID + "');"
+                );
+            }
+            CheckBox chkEnvironmental = (CheckBox)(e.Item.FindControl("chkEnvironmental"));
+            if (!_isreadonly)
+            {
+                chkEnvironmental.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",4,'" + chkEnvironmental.ClientID + "');"
+                );
+            }
+            CheckBox chkPolicyAndProcedura = (CheckBox)(e.Item.FindControl("chkPolicyAndProcedura"));
+            if (!_isreadonly)
+            {
+                chkPolicyAndProcedura.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",5,'" + chkPolicyAndProcedura.ClientID + "');"
+                );
+            }
+            CheckBox chkCommunication = (CheckBox)(e.Item.FindControl("chkCommunication"));
+            if (!_isreadonly)
+            {
+                chkCommunication.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",6,'" + chkCommunication.ClientID + "');"
+                );
+            }
+            CheckBox chkTraining = (CheckBox)(e.Item.FindControl("chkTraining"));
+            if (!_isreadonly)
+            {
+                chkTraining.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",7,'" + chkTraining.ClientID + "');"
+                );
+            }
+            CheckBox chkContractual = (CheckBox)(e.Item.FindControl("chkContractual"));
+            if (!_isreadonly)
+            {
+                chkContractual.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",8,'" + chkContractual.ClientID + "');"
+                );
+            }
+            CheckBox chkDesign = (CheckBox)(e.Item.FindControl("chkDesign"));
+            if (!_isreadonly)
+            {
+                chkDesign.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",9,'" + chkDesign.ClientID + "');"
+                );
+            }
+            CheckBox chkPhysical = (CheckBox)(e.Item.FindControl("chkPhysical"));
+            if (!_isreadonly)
+            {
+                chkPhysical.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",10,'" + chkPhysical.ClientID + "');"
+                );
+            }
+            CheckBox chkWorkatHeigh = (CheckBox)(e.Item.FindControl("chkWorkatHeigh"));
+            if (!_isreadonly)
+            {
+                chkWorkatHeigh.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",11,'" + chkWorkatHeigh.ClientID + "');"
+                );
+            }
+            CheckBox chkLiftingEquipment = (CheckBox)(e.Item.FindControl("chkLiftingEquipment"));
+            if (!_isreadonly)
+            {
+                chkLiftingEquipment.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",12,'" + chkLiftingEquipment.ClientID + "');"
+                );
+            }
+            CheckBox chkOfficeEquipment = (CheckBox)(e.Item.FindControl("chkOfficeEquipment"));
+            if (!_isreadonly)
+            {
+                chkOfficeEquipment.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",13,'" + chkOfficeEquipment.ClientID + "');"
+                );
+            }
+            CheckBox chkGeneralTools = (CheckBox)(e.Item.FindControl("chkGeneralTools"));
+            if (!_isreadonly)
+            {
+                chkGeneralTools.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",14,'" + chkGeneralTools.ClientID + "');"
+                );
+            }
+            CheckBox chkManualHandling = (CheckBox)(e.Item.FindControl("chkManualHandling"));
+            if (!_isreadonly)
+            {
+                chkManualHandling.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",15,'" + chkManualHandling.ClientID + "');"
+                );
+            }
+            CheckBox chkSlipsTripsFalls = (CheckBox)(e.Item.FindControl("chkSlipsTripsFalls"));
+            if (!_isreadonly)
+            {
+                chkSlipsTripsFalls.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",16,'" + chkSlipsTripsFalls.ClientID + "');"
+                );
+            }
+            CheckBox chkAccessEquipment = (CheckBox)(e.Item.FindControl("chkAccessEquipment"));
+            if (!_isreadonly)
+            {
+                chkAccessEquipment.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",17,'" + chkAccessEquipment.ClientID + "');"
+                );
+            }
+            CheckBox chkOccupationalHealth = (CheckBox)(e.Item.FindControl("chkOccupationalHealth"));
+            if (!_isreadonly)
+            {
+                chkOccupationalHealth.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",18,'" + chkOccupationalHealth.ClientID + "');"
+                );
+            }
+            CheckBox chkChemicals = (CheckBox)(e.Item.FindControl("chkChemicals"));
+            if (!_isreadonly)
+            {
+                chkChemicals.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",19,'" + chkChemicals.ClientID + "');"
+                );
+            }
+            CheckBox chkElectrical = (CheckBox)(e.Item.FindControl("chkElectrical"));
+            if (!_isreadonly)
+            {
+                chkElectrical.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",20,'" + chkElectrical.ClientID + "');"
+                );
+            }
+            CheckBox chkErgonomics = (CheckBox)(e.Item.FindControl("chkErgonomics"));
+            if (!_isreadonly)
+            {
+                chkErgonomics.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",21,'" + chkErgonomics.ClientID + "');"
+                );
+            }
+            CheckBox chkVDU = (CheckBox)(e.Item.FindControl("chkVDU"));
+            if (!_isreadonly)
+            {
+                chkVDU.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",22,'" + chkVDU.ClientID + "');"
+                );
+            }
+            CheckBox chkMechanical = (CheckBox)(e.Item.FindControl("chkMechanical"));
+            if (!_isreadonly)
+            {
+                chkMechanical.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",23,'" + chkMechanical.ClientID + "');"
+                );
+            }
+            CheckBox chkDangerousGoods = (CheckBox)(e.Item.FindControl("chkDangerousGoods"));
+            if (!_isreadonly)
+            {
+                chkDangerousGoods.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",24,'" + chkDangerousGoods.ClientID + "');"
+                );
+            }
+            CheckBox chkSafetyCriticalEquipment = (CheckBox)(e.Item.FindControl("chkSafetyCriticalEquipment"));
+            if (!_isreadonly)
+            {
+                chkSafetyCriticalEquipment.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",25,'" + chkSafetyCriticalEquipment.ClientID + "');"
+                );
+            }
+            CheckBox chkTransport = (CheckBox)(e.Item.FindControl("chkTransport"));
+            if (!_isreadonly)
+            {
+                chkTransport.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",26,'" + chkTransport.ClientID + "');"
+                );
+            }
+            CheckBox chkPlantAndMachinery = (CheckBox)(e.Item.FindControl("chkPlantAndMachinery"));
+            if (!_isreadonly)
+            {
+                chkPlantAndMachinery.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",27,'" + chkPlantAndMachinery.ClientID + "');"
+                );
+            }
+            CheckBox chkPPE = (CheckBox)(e.Item.FindControl("chkPPE"));
+            if (!_isreadonly)
+            {
+                chkPPE.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",28,'" + chkPPE.ClientID + "');"
+                );
+            }
+            CheckBox chkConfinedSpace = (CheckBox)(e.Item.FindControl("chkConfinedSpace"));
+            if (!_isreadonly)
+            {
+                chkConfinedSpace.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",29,'" + chkConfinedSpace.ClientID + "');"
+                );
+            }
+            CheckBox chkFireAndBurns = (CheckBox)(e.Item.FindControl("chkFireAndBurns"));
+            if (!_isreadonly)
+            {
+                chkFireAndBurns.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",30,'" + chkFireAndBurns.ClientID + "');"
+                );
+            }
+            CheckBox chkDrowning = (CheckBox)(e.Item.FindControl("chkDrowning"));
+            if (!_isreadonly)
+            {
+                chkDrowning.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",31,'" + chkDrowning.ClientID + "');"
+                );
+            }
+            CheckBox chkEnvironmentalRisk = (CheckBox)(e.Item.FindControl("chkEnvironmentalRisk"));
+            if (!_isreadonly)
+            {
+                chkEnvironmentalRisk.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",32,'" + chkEnvironmentalRisk.ClientID + "');"
+                );
+            }
+            CheckBox chkBiological = (CheckBox)(e.Item.FindControl("chkBiological"));
+            if (!_isreadonly)
+            {
+                chkBiological.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",33,'" + chkBiological.ClientID + "');"
+                );
+            }
+            CheckBox chkWelfare = (CheckBox)(e.Item.FindControl("chkWelfare"));
+            if (!_isreadonly)
+            {
+                chkWelfare.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",34,'" + chkWelfare.ClientID + "');"
+                );
+            }
+            CheckBox chkSharps = (CheckBox)(e.Item.FindControl("chkSharps"));
+            if (!_isreadonly)
+            {
+                chkSharps.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",35,'" + chkSharps.ClientID + "');"
+                );
+            }
+            CheckBox chkNoise = (CheckBox)(e.Item.FindControl("chkNoise"));
+            if (!_isreadonly)
+            {
+                chkNoise.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",36,'" + chkNoise.ClientID + "');"
+                );
+            }
+            CheckBox chkLighting = (CheckBox)(e.Item.FindControl("chkLighting"));
+            if (!_isreadonly)
+            {
+                chkLighting.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",37,'" + chkLighting.ClientID + "');"
+                );
+            }
+            CheckBox chkPublicProtection = (CheckBox)(e.Item.FindControl("chkPublicProtection"));
+            if (!_isreadonly)
+            {
+                chkPublicProtection.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",38,'" + chkPublicProtection.ClientID + "');"
+                );
+            }
+            CheckBox chkMaterialStorage = (CheckBox)(e.Item.FindControl("chkMaterialStorage"));
+            if (!_isreadonly)
+            {
+                chkMaterialStorage.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",39,'" + chkMaterialStorage.ClientID + "');"
+                );
+            }
+            CheckBox chkGeneralHousekeeping = (CheckBox)(e.Item.FindControl("chkGeneralHousekeeping"));
+            if (!_isreadonly)
+            {
+                chkGeneralHousekeeping.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",40,'" + chkGeneralHousekeeping.ClientID + "');"
+                );
+            }
+            CheckBox chkTrafficManagement = (CheckBox)(e.Item.FindControl("chkTrafficManagement"));
+            if (!_isreadonly)
+            {
+                chkTrafficManagement.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",41,'" + chkTrafficManagement.ClientID + "');"
+                );
+            }
+            CheckBox chkVibration = (CheckBox)(e.Item.FindControl("chkVibration"));
+            if (!_isreadonly)
+            {
+                chkVibration.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",42,'" + chkVibration.ClientID + "');"
+                );
+            }
+            CheckBox chkEmergency = (CheckBox)(e.Item.FindControl("chkEmergency"));
+            if (!_isreadonly)
+            {
+                chkEmergency.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",43,'" + chkEmergency.ClientID + "');"
+                );
+            }
+            CheckBox chkCrisisManagement = (CheckBox)(e.Item.FindControl("chkCrisisManagement"));
+            if (!_isreadonly)
+            {
+                chkCrisisManagement.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",44,'" + chkCrisisManagement.ClientID + "');"
+                );
+            }
+            CheckBox chkExplosives = (CheckBox)(e.Item.FindControl("chkExplosives"));
+            if (!_isreadonly)
+            {
+                chkExplosives.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",45,'" + chkExplosives.ClientID + "');"
+                );
+            }
+            CheckBox chkLoneWorking = (CheckBox)(e.Item.FindControl("chkLoneWorking"));
+            if (!_isreadonly)
+            {
+                chkLoneWorking.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",46,'" + chkLoneWorking.ClientID + "');"
+                );
+            }
+            CheckBox chkStressAndFatigue = (CheckBox)(e.Item.FindControl("chkStressAndFatigue"));
+            if (!_isreadonly)
+            {
+                chkStressAndFatigue.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",47,'" + chkStressAndFatigue.ClientID + "');"
+                );
+            }
+            CheckBox chkAlcoholAndDrugs = (CheckBox)(e.Item.FindControl("chkAlcoholAndDrugs"));
+            if (!_isreadonly)
+            {
+                chkAlcoholAndDrugs.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",48,'" + chkAlcoholAndDrugs.ClientID + "');"
+                );
+            }
+            CheckBox chkBullying = (CheckBox)(e.Item.FindControl("chkBullying"));
+            if (!_isreadonly)
+            {
+                chkBullying.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",49,'" + chkBullying.ClientID + "');"
+                );
+            }
+            CheckBox chkLackofCompetency = (CheckBox)(e.Item.FindControl("chkLackofCompetency"));
+            if (!_isreadonly)
+            {
+                chkLackofCompetency.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",50,'" + chkLackofCompetency.ClientID + "');"
+                );
+            }
+            
+            CheckBox chkOther = (CheckBox)(e.Item.FindControl("chkOther"));
+
+            txtOther.Attributes["style"] = chkOther.Checked ? "display:block;" : "display:none;";
+            
+            if (!_isreadonly)
+            {
+                chkOther.Attributes.Add("onclick",
+                "saveCheckBox(" + questionID + ",51,'" + chkOther.ClientID + "','" + txtOther.ClientID + "');"
+                );
+            }
+            
             DropDownList cboClassification = (DropDownList)(e.Item.FindControl("cboClassification"));
             if (!_isreadonly)
             {
@@ -1262,7 +1735,7 @@ namespace SurveyApp
             cTools.log("actionref:" + m_actionref + " ..  questionId:" + questionId);
 
             // add a sub-folder for this user (so all files aren't stored in one directory)
-            string outputFolder = uploadsFolder + "\\" + surveyId.ToString();    // sets up a folder using the surveyId
+            string outputFolder = Server.MapPath("~") + uploadsFolder + "\\" + surveyId.ToString();    // sets up a folder using the surveyId
 
             // create the folder if it's not already there
             if (!System.IO.Directory.Exists(outputFolder))
@@ -1430,7 +1903,7 @@ namespace SurveyApp
 
         protected void cmdMakeAjaxCall_Command(object sender, CommandEventArgs e)
         {
-            cTools.log("Ajax Call (" + m_actionref + "): " + hidParamName.Value + " = " + hidParamValue1.Value + " | " + hidParamValue2.Value + " | " + hidParamValue3.Value);
+            cTools.log("Ajax Call (" + m_actionref + "): " + hidParamName.Value + " = " + hidParamValue1.Value + " | " + hidParamValue2.Value + " | " + hidParamValue3.Value + " | " + hidParamValue4.Value + " | " + hidParamValue5.Value + " | " + hidParamValue6.Value + " | " + hidParamValue7.Value + " | " + hidParamValue8.Value);
 
             int questionId = cTools.cIntExt(hidParamName.Value);
 
@@ -1440,8 +1913,12 @@ namespace SurveyApp
                     int answerId = cTools.cIntExt(hidParamValue1.Value);
                     string answerText = cTools.cStrExt(hidParamValue2.Value);
                     int classificationId = cTools.cIntExt(hidParamValue3.Value);
-
-                    saveSurveyAnswer(questionId, answerId, classificationId, answerText);
+                    string rootcauseText = cTools.cStrExt(hidParamValue4.Value);
+                    int checkBoxIndex = cTools.cIntExt(hidParamValue5.Value);
+                    int checkBoxValue = cTools.cIntExt(hidParamValue6.Value);
+                    int riskValue = cTools.cIntExt(hidParamValue7.Value);
+                    string otherText = cTools.cStrExt(hidParamValue8.Value);
+                    saveSurveyAnswer(questionId, answerId, classificationId, answerText, rootcauseText, checkBoxIndex, checkBoxValue, riskValue, otherText);
                     break;
 
                 case "clientqa":
